@@ -1,0 +1,178 @@
+
+<html lang="en" class="no-js" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrought"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+
+
+	<title>Users Interfaces</title>
+
+
+
+</h:head>
+<h:body>
+	<br></br>
+	<br></br>
+	<h:form>
+	<label>Rechercher par : </label>
+	<input type="text" class="form-control" name=""
+		placeholder="Nom , Prénom ,Client ..." value=""></input>
+	<br></br>
+
+	<br></br>
+	<br></br>
+	<br></br>
+
+
+
+
+
+	<p:dataTable rows="30" border="1" value="#{customerBean.users}"
+		var="user" resizeMode="expand" paginator="true"
+		filteredValue="#{customerBean.usersFiltred}" id="tbl">
+
+
+
+		<!-- 					<p:column width="10"> -->
+
+		<!-- 						<f:facet name="header">Id</f:facet> -->
+		<!-- #{user.id} -->
+		<!-- </p:column> -->
+		<p:column width="55" filterBy="#{user.fullName}">
+			<f:facet name="header">Fullname</f:facet>
+
+
+			<h:outputText value="#{user.fullName}">
+			</h:outputText>
+
+		</p:column>
+		<p:column width="40" filterBy="#{user.userName}">
+			<f:facet name="header">Username</f:facet>
+
+
+			<h:outputText value="#{user.userName}">
+			</h:outputText>
+
+		</p:column>
+		<p:column width="75" filterBy="#{user.adress}">
+			<f:facet name="header">Adress</f:facet>
+
+
+			<h:outputText value="#{user.adress}">
+			</h:outputText>
+
+		</p:column>
+		<p:column width="75" filterBy="#{user.age}">
+			<f:facet name="header">Age</f:facet>
+
+
+			<h:outputText value="#{user.age}">
+			</h:outputText>
+
+		</p:column>
+
+
+		<p:column width="75" filterBy="#{user.gender}">
+			<f:facet name="header">Gender</f:facet>
+
+
+			<h:outputText value="#{user.gender}">
+			</h:outputText>
+
+		</p:column>
+
+	
+	
+		<p:column width="15">
+						<p:commandButton value="Ajouter">
+							<f:ajax listener="#{customerBean.doDeleteUser(user)}"
+								render="tbl" />
+						</p:commandButton>
+					</p:column>
+					
+					
+				<p:column width="15">
+		                
+						<p:commandButton class="btn btn-danger btn-simple btn-xs" value="Modifier">
+							<f:ajax listener="#{customerBean.doAddUser}"
+								render="tbl" />
+						</p:commandButton>
+					</p:column>
+					
+	             	<p:column width="15">
+		                
+						<p:commandButton class="btn btn-danger btn-simple btn-xs" value="Supprimer">
+							<f:ajax listener="#{customerBean.doDeleteUser(user)}"
+								render="tbl" />
+						</p:commandButton>
+					</p:column>
+					
+
+
+
+	</p:dataTable>
+	
+		<label for="" >Notification</label>
+								<h:inputText id="generalId" name="generalId" placeholder="feeds" class="form-control mb"
+									value="#{feedsBean.feedString}" />
+								<br></br>
+
+
+
+
+								<p:commandButton class="btn btn-primary btn-block"
+									action="#{feedsbean.feedme()}" style=" font-weight: bold;"
+									value="Push ">
+
+
+								</p:commandButton>
+	
+	</h:form>
+	<!-- endzz -->
+
+
+
+	<!-- 	#########################################################Second DataTable############################################################# -->
+	
+
+
+
+</h:body>
+
+<!--   Core JS Files   -->
+
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/bootstrap.min.js"
+	type="text/javascript"></script>
+
+<!--  Checkbox, Radio & Switch Plugins -->
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/bootstrap-checkbox-radio-switch.js"></script>
+
+<!--  Charts Plugin -->
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/chartist.min.js"></script>
+
+<!--  Notifications Plugin    -->
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/bootstrap-notify.js"></script>
+
+<!--  Google Maps Plugin    -->
+
+
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/light-bootstrap-dashboard.js"></script>
+
+<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+<script
+	src="#{request.contextPath}/resources/userTemplateResource/js/demo.js"></script>
+
+
+
+</html>
